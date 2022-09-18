@@ -25,14 +25,13 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(app)
 
-# get all family members
 @app.route('/members', methods=['GET'])
 def handle_hello():
 
     # this is how you can use the Family datastructure by calling its methods
     members = jackson_family.get_all_members()
 
-    if not members: return jsonify({'status': 'failed','message': 'Something went wrong'}), 400
+    if not members: return jsonify({'status': 'failed','message': 'Bad request'}), 400
 
     return jsonify(members), 200
 
